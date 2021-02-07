@@ -20,7 +20,42 @@ const PAGE_DESCRIPTION = 'Personal showcase and blog of my work';
 const GOOGLE_FONT = '';
 
 /* Step 5: enter any custom scripts you'd like */
-const CUSTOM_SCRIPT = ``;
+const CUSTOM_SCRIPT = `
+<script>
+const getDatabaseHeaderElements = () => {
+  const elements = document.querySelectorAll(".notion-page-content>.notion-collection_view-block>div:nth-child(1)")
+  return elements
+}
+const hideElement = (e) => {
+  e.style = "display: none !important;"
+}
+
+const hideDatabaseHeaderElements = () => {
+  getDatabaseHeaderElements().forEach(e => {hideElement(e)})
+}
+
+//==============================
+// PAGE WATCHER
+// Triggers on page changes
+//==============================
+const watcherOfTheSkies = new MutationObserver(function() {
+  // ADD FUNCTION CALLS HERE
+  //------------------------------
+  hideDatabaseHeaderElements();
+});
+watcherOfTheSkies.observe(document.querySelector('#notion-app'), {
+  childList: true,
+  subtree: true,
+});
+</script>
+`;
+
+// // Hide inline database headers
+// <style>
+// .notion-page-content>.notion-collection_view-block>div:nth-child(1) {
+//   display: none !important;
+// }
+// </style>
 
 /* CONFIGURATION ENDS HERE */
 
