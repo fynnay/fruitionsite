@@ -38,7 +38,7 @@ const CUSTOM_HEADER = `
 }
 /* Only show the first 3 entries of "latest posts" */
 /*------------------------------*/
-.notion-collection_view-block[data-block-id="f990e6c4-214c-4129-99a5-2a4a4d14e4d9"] .notion-gallery-view>.notion-collection_view-block .notion-collection-item:nth-last-child(n+4) {
+.notion-collection_view-block[data-block-id="f990e6c4-214c-4129-99a5-2a4a4d14e4d9"] .notion-gallery-view>.notion-collection_view-block .notion-collection-item:nth-child(n+5) {
   display: none !important;
 }
 /* Hide "Load x more" button */
