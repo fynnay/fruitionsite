@@ -10,6 +10,7 @@ const MY_DOMAIN = 'fynnay.com';
  */
 const SLUG_TO_PAGE = {
   '': '64aadb5345cf48309a47b54b6a54b694',
+  'all-posts': 'ad6bc4ed4dda4f37b51e54372b2f6e74?v=acd02fd8affe4c0c9842dd1395806411',
 };
 
 /* Step 3: enter your page title and description for SEO purposes */
@@ -28,6 +29,21 @@ const CUSTOM_HEADER = `
   min-height: 0px !important;
 }
 .notion-page-content>.notion-collection_view-block>div>.notion-selectable.notion-collection_view-block:nth-child(1) {
+  display: none !important;
+}
+/* Change roundness of database entries */
+/*------------------------------*/
+.notion-gallery-view .notion-page-block.notion-collection-item>a {
+  border-radius: 10px !important;
+}
+/* Only show the first 3 entries of "latest posts" */
+/*------------------------------*/
+.notion-collection_view-block[data-block-id="f990e6c4-214c-4129-99a5-2a4a4d14e4d9"] .notion-gallery-view>.notion-collection_view-block .notion-collection-item:nth-last-child(n+4) {
+  display: none !important;
+}
+/* Hide "Load x more" button */
+/*------------------------------*/
+.notion-collection_view-block[data-block-id="f990e6c4-214c-4129-99a5-2a4a4d14e4d9"] .notion-gallery-view>div[role="button"] {
   display: none !important;
 }
 </style>
