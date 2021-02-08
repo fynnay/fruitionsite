@@ -20,10 +20,24 @@ const PAGE_DESCRIPTION = 'Personal showcase and blog of my work';
 const GOOGLE_FONT = '';
 
 /* Step 5: enter any custom scripts you'd like */
+const CUSTOM_HEADER = `
+<style>
+/* Hide linked database header while keeping wrapping intact */
+/*------------------------------*/
+.notion-page-content>.notion-collection_view-block>div:nth-child(1) {
+  min-height: 0px !important;
+}
+.notion-page-content>.notion-collection_view-block>div>.notion-selectable.notion-collection_view-block:nth-child(1) {
+  display: none !important;
+}
+</style>
+`
+
 const CUSTOM_SCRIPT = `
 <script>
 const getDatabaseHeaderElements = () => {
-  const elements = document.querySelectorAll(".notion-page-content>.notion-collection_view-block>div:nth-child(1)")
+  // document.querySelectorAll(".notion-page-content>.notion-collection_view-block>div:nth-child(1)")  // outer horizontal block
+  const elements = document.querySelectorAll(".notion-page-content>.notion-collection_view-block>div>.notion-selectable.notion-collection_view-block:nth-child(1)")  // just the inner block to keep wrapping intact
   return elements
 }
 const hideElement = (e) => {
@@ -41,7 +55,7 @@ const hideDatabaseHeaderElements = () => {
 const watcherOfTheSkies = new MutationObserver(function() {
   // ADD FUNCTION CALLS HERE
   //------------------------------
-  hideDatabaseHeaderElements();
+  // hideDatabaseHeaderElements();
 });
 watcherOfTheSkies.observe(document.querySelector('#notion-app'), {
   childList: true,
@@ -227,7 +241,7 @@ class HeadRewriter {
       div.notion-topbar-mobile > div:nth-child(4) { display: none !important; }
       div.notion-topbar > div > div:nth-child(1n).toggle-mode { display: block !important; }
       div.notion-topbar-mobile > div:nth-child(1n).toggle-mode { display: block !important; }
-      </style>`,
+      </style>${CUSTOM_HEADER}`,
       {
         html: true
       }
