@@ -116,3 +116,18 @@ Snippets for modifying visuals of the site
   }
 </style>
 ```
+
+### Custom Fonts
+
+```css
+<style>
+    @font-face {
+        font-family: 'font-name';
+            src:  url('https://font-url.woff') format('woff'),
+                  url('https://font-url.ttf') format('truetype');
+    }
+    h1 {
+        font-family: 'font-name', sans-serif !important;
+    }
+</style>
+```
